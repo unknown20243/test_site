@@ -1,271 +1,55 @@
-<!-- index.html - Simple single-file portfolio -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Simple single-file portfolio template" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Shan</title>
   <style>
-    /* Reset-ish */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html,body { height: 100%; }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      line-height: 1.4;
-      color: #0f1724;
-      background: linear-gradient(180deg,#f8fafc 0%, #eef2f7 100%);
-      padding: 24px;
-    }
-
-    /* Layout */
-    .container { max-width: 1000px; margin: 0 auto; }
-
-    /* Header / nav */
-    header {
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 16px; margin-bottom: 28px;
-    }
-    .brand { font-weight:700; font-size:1.05rem; letter-spacing:0.3px; }
-    nav { display:flex; gap:12px; align-items:center; }
-    nav a { text-decoration:none; color:inherit; padding:8px 10px; border-radius:8px; font-size:0.95rem; }
-    nav a:hover { background: rgba(15,23,36,0.05); }
-
-    /* Hero */
-    .hero {
-      display:grid; grid-template-columns: 1fr auto;
-      gap: 18px; align-items:center;
-      background: white; padding:22px; border-radius:12px; box-shadow: 0 6px 20px rgba(12,18,28,0.06);
-      margin-bottom:24px;
-    }
-    .hero h1 { font-size:1.6rem; margin-bottom:8px; }
-    .hero p { color:#4b5563; max-width:54ch; }
-
-    .cta {
-      display:flex; gap:10px; flex-direction:column; align-items:flex-end;
-    }
-    .btn {
-      display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600;
-      border:1px solid transparent;
-    }
-    .btn-primary { background:linear-gradient(90deg,#3b82f6,#06b6d4); color:white; }
-    .btn-outline { background:transparent; color:#0f1724; border: 1px solid rgba(15,23,36,0.06); }
-
-    /* Sections */
-    section { margin-bottom:20px; }
-    .section-title { font-weight:700; margin-bottom:12px; }
-
-    /* Projects grid */
-    .grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
-      gap:14px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: #333;
     }
     .card {
-      background:white; border-radius:10px; padding:12px; box-shadow: 0 6px 18px rgba(12,18,28,0.05);
-      display:flex; flex-direction:column; gap:10px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
     }
-    .thumbnail {
-      height:140px; border-radius:8px; display:flex; align-items:center; justify-content:center;
-      background: linear-gradient(135deg,#e6f2ff,#fff0f6);
-      color:#0f1724; font-weight:700;
+    h1 {
+      color: #4a4ae6;
     }
-    .card h3 { font-size:1rem; }
-    .card p { color:#475569; font-size:0.92rem; }
-
-    /* Footer / contact */
-    footer { text-align:center; color:#475569; font-size:0.9rem; margin-top:12px; }
-
-    /* Modal (project detail) */
-    .modal-backdrop {
-      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
-      background: rgba(2,6,23,0.45); z-index:40; padding:24px;
+    p {
+      font-size: 18px;
+      line-height: 1.6;
     }
-    .modal {
-      background:white; width:100%; max-width:760px; border-radius:12px; padding:18px; box-shadow:0 12px 40px rgba(2,6,23,0.5);
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
     }
-    .modal .close {
-      float:right; cursor:pointer; padding:6px 8px; border-radius:8px;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width:640px) {
-      .hero { grid-template-columns: 1fr; }
-      .cta { align-items:flex-start; flex-direction:row; }
-      header { gap:10px; flex-direction:column; align-items:flex-start; }
-    }
-
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">Your Name</div>
-      <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero" id="hero">
-        <div>
-          <h1>Hi — I'm <span style="color:#0ea5a4">Your Name</span></h1>
-          <p>Frontend developer & designer who builds clean, accessible websites and small apps. I enjoy turning UI ideas into fast, responsive experiences.</p>
-          <p style="margin-top:12px"><strong>Skills:</strong> HTML • CSS • JavaScript • Accessibility • Responsive Design</p>
-        </div>
-
-        <div class="cta">
-          <a class="btn btn-primary" href="#projects">See projects</a>
-          <a class="btn btn-outline" href="mailto:you@example.com">Email me</a>
-        </div>
-      </section>
-
-      <section id="about">
-        <div class="section-title">About</div>
-        <div style="background:white; padding:16px; border-radius:10px; box-shadow: 0 6px 18px rgba(12,18,28,0.05);">
-          <p>I'm a developer focused on building fast, accessible, and maintainable interfaces. I like small toolchains and pragmatic solutions. I also mentor juniors and contribute to open-source when I can.</p>
-        </div>
-      </section>
-
-      <section id="projects">
-        <div class="section-title">Projects</div>
-        <div class="grid">
-          <!-- Project card 1 -->
-          <article class="card" data-title="Project Alpha" data-desc="A responsive landing page built with vanilla JS. Includes smooth scrolling and lightweight animations." data-url="#">
-            <div class="thumbnail">Alpha</div>
-            <h3>Project Alpha</h3>
-            <p>Landing page & lead capture — responsive, accessible, fast.</p>
-            <div style="margin-top:auto; display:flex; gap:8px;">
-              <button class="btn btn-outline js-open" type="button">Details</button>
-              <a class="btn" href="#" onclick="alert('Replace with real link')" style="border:1px solid rgba(15,23,36,0.06)">Live</a>
-            </div>
-          </article>
-
-          <!-- Project card 2 -->
-          <article class="card" data-title="Portfolio Grid" data-desc="A lightweight portfolio grid component with filtering and keyboard accessibility." data-url="#">
-            <div class="thumbnail">Grid</div>
-            <h3>Portfolio Grid</h3>
-            <p>Filterable project gallery with keyboard nav and ARIA-friendly markup.</p>
-            <div style="margin-top:auto; display:flex; gap:8px;">
-              <button class="btn btn-outline js-open" type="button">Details</button>
-              <a class="btn" href="#" onclick="alert('Replace with real link')">Code</a>
-            </div>
-          </article>
-
-          <!-- Project card 3 -->
-          <article class="card" data-title="Tiny Notes App" data-desc="A small note-taking PWA demo using localStorage and service worker sketch." data-url="#">
-            <div class="thumbnail">Notes</div>
-            <h3>Tiny Notes App</h3>
-            <p>Offline-capable PWA demo for quick note capture.</p>
-            <div style="margin-top:auto; display:flex; gap:8px;">
-              <button class="btn btn-outline js-open" type="button">Details</button>
-              <a class="btn" href="#" onclick="alert('Replace with real link')">Demo</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="section-title">Contact</div>
-
-        <div style="display:grid; grid-template-columns: 1fr 320px; gap:14px;">
-          <div style="background:white; padding:14px; border-radius:10px; box-shadow: 0 6px 18px rgba(12,18,28,0.05);">
-            <p>If you'd like to work together or ask a question, send a quick email or use the form.</p>
-
-            <form id="contactForm" onsubmit="handleForm(event)">
-              <div style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
-                <input id="name" type="text" placeholder="Your name" required style="padding:10px; border-radius:8px; border:1px solid rgba(15,23,36,0.06)" />
-                <input id="email" type="email" placeholder="Email" required style="padding:10px; border-radius:8px; border:1px solid rgba(15,23,36,0.06)" />
-                <textarea id="message" rows="4" placeholder="Message" required style="padding:10px; border-radius:8px; border:1px solid rgba(15,23,36,0.06)"></textarea>
-                <div style="display:flex; gap:8px;">
-                  <button class="btn btn-primary" type="submit">Send</button>
-                  <a class="btn btn-outline" href="mailto:you@example.com">Or email</a>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <aside style="background:white; padding:14px; border-radius:10px; box-shadow: 0 6px 18px rgba(12,18,28,0.05);">
-            <strong>Contact info</strong>
-            <p style="margin-top:10px; color:#475569">Email: <a href="mailto:you@example.com">you@example.com</a></p>
-            <p style="color:#475569">Location: City, Country</p>
-            <p style="color:#475569">Available for freelance & remote work</p>
-          </aside>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      © <span id="year"></span> Your Name — Built with ♥
-    </footer>
-  </div>
-
-  <!-- Modal backdrop -->
-  <div id="modal" class="modal-backdrop" role="dialog" aria-hidden="true" aria-modal="true">
-    <div class="modal" role="document">
-      <button class="close" onclick="closeModal()" aria-label="Close">✕</button>
-      <h2 id="modalTitle">Project title</h2>
-      <p id="modalDesc" style="color:#475569"></p>
-      <p style="margin-top:12px"><a id="modalUrl" href="#" target="_blank" rel="noopener">Open project</a></p>
+  <div class="card">
+    <h1>Meet Shan</h1>
+    <p>
+      Shan is a bright and hardworking student of 10th class.<br>
+      His father’s name is <b>Aashiq</b>.<br>
+      Known for his dedication and strong willpower, Shan inspires his friends with his commitment to studies and discipline.
+    </p>
+    <p>
+      He believes that with focus and effort, success always follows.  
+      Shan is not just a student, but a role model for his peers.
+    </p>
+    <div class="footer">
+      Made with 💙 by a proud friend.
     </div>
   </div>
-
-  <script>
-    // small interactivity: open modal with project details
-    document.querySelectorAll('.js-open').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const card = e.target.closest('.card');
-        const title = card.dataset.title || 'Untitled';
-        const desc = card.dataset.desc || '';
-        const url  = card.dataset.url || '#';
-        openModal(title, desc, url);
-      });
-    });
-
-    function openModal(title, desc, url) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalDesc').textContent = desc;
-      const link = document.getElementById('modalUrl');
-      link.href = url;
-      link.textContent = url === '#' ? 'No public link' : 'Open project';
-      const modal = document.getElementById('modal');
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden', 'false');
-      // trap simple focus
-      modal.querySelector('.close').focus();
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
-    }
-
-    // Close on backdrop click or Esc
-    document.getElementById('modal').addEventListener('click', (ev) => {
-      if (ev.target === ev.currentTarget) closeModal();
-    });
-    document.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Escape') closeModal();
-    });
-
-    // Simple contact form handler (demo-only)
-    function handleForm(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      // In a real site: send to server or use form service (Netlify Forms, Formspree, etc.)
-      alert('Thanks, ' + (name || 'friend') + '! This is a demo. Replace with your backend integration.');
-      e.target.reset();
-    }
-
-    // Set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
